@@ -14,6 +14,15 @@ This PowerShell script automates the process of downloading, installing, and add
 - Internet connection to download the installer
 - Administrative privileges for installation and updating the system PATH
 
+- You need to have PowerShell installed on your system. This is used to run the script.
+- `Both` MSI are from the official github page of [Official-PowerShell-Github](https://github.com/PowerShell)
+
+# v7.4.2 Release of PowerShell - Latest (recommended)
+      choose your recommended pc specs either 32bit or 64bit 
+
+- [64-Bit-Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/PowerShell-7.4.2-win-x64.msi)
+- [32-Bit-Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/PowerShell-7.4.2-win-x86.msi)
+
 ## Usage
 
 1. Open PowerShell as an Administrator.
