@@ -37,6 +37,12 @@ This PowerShell script automates the process of downloading, installing, and add
    ```
 4. The script will handle the rest, providing output messages to indicate progress and completion status.
 
+### if usage doesnt work use this first 
+```
+Set-ExecutionPolicy Bypass -Scope Process
+```
+then repeat the process you can leave powershell open in admin mode to do this you dont have to close it 
+
 ## How It Works
 
 1. **Download**: The script starts by downloading the WinRAR installer using the `Invoke-WebRequest` cmdlet. It then waits for 5 seconds to ensure the download completes.
