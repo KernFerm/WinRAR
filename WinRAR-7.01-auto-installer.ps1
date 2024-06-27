@@ -1,54 +1,51 @@
-# Check if running with administrator privileges
+# Check if script is running as administrator
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Warning "Please run this script as an administrator to install WinRAR and modify PATH."
+    Write-Error "This script must be run as an administrator. Right-click the PowerShell icon and select 'Run as administrator'."
     exit 1
 }
 
-# Define URLs and paths
-$url = "https://www.rarlab.com/rar/wrar701.exe"
-$outputPath = "$env:TEMP\wrar701.exe"
+# Function to download and install WinRAR
+function Install-WinRAR {
+    param (
+        [string]$url,
+        [string]$outputPath
+    )
 
-# Step 1: Download WinRAR installer
-Write-Output "Downloading WinRAR installer..."
-Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
+    try {
+        Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
+        Write-Host "Download complete."
+    } catch {
+        Write-Error "Failed to download WinRAR installer."
+        exit 1
+    }
 
-# Wait for download to complete
-Start-Sleep -Seconds 5
+    try {
+        Start-Process -FilePath $outputPath -ArgumentList "/S" -Wait
+        Write-Host "WinRAR installation complete."
+    } catch {
+        Write-Error "Failed to install WinRAR."
+        exit 1
+    }
+}
 
-# Check if the installer file exists
-if (Test-Path $outputPath) {
-    Write-Output "WinRAR installer downloaded successfully."
+# URLs for WinRAR versions
+$winrar32Url = "https://www.win-rar.com/postdownload.html?&L=0&Version=32bit"
+$winrar64Url = "https://www.win-rar.com/postdownload.html?&L=0&Version=64bit"
+
+# Prompt user for version choice
+$versionChoice = Read-Host "Enter the version of WinRAR you want to install (32bit or 64bit)"
+
+# Determine URL based on user input
+if ($versionChoice -eq "32bit") {
+    $url = $winrar32Url
+    $outputPath = "$env:TEMP\winrar-32bit-installer.exe"
+} elseif ($versionChoice -eq "64bit") {
+    $url = $winrar64Url
+    $outputPath = "$env:TEMP\winrar-64bit-installer.exe"
 } else {
-    Write-Error "Failed to download WinRAR installer."
+    Write-Error "Invalid choice. Please enter '32bit' or '64bit'."
     exit 1
 }
 
-# Step 2: Install WinRAR silently
-Write-Output "Installing WinRAR..."
-$installArgs = "/S"
-Start-Process -FilePath $outputPath -ArgumentList $installArgs -Wait
-
-# Check if WinRAR installed correctly
-if (!(Get-Command "WinRAR" -ErrorAction SilentlyContinue)) {
-    Write-Error "WinRAR installation failed."
-    exit 1
-} else {
-    Write-Output "WinRAR installed successfully."
-}
-
-# Step 3: Add WinRAR to PATH if not already added
-Write-Output "Adding WinRAR to PATH..."
-
-# Get WinRAR installation path
-$winrarPath = (Get-Command "WinRAR").Path | Split-Path -Parent
-
-# Check if WinRAR path is already in PATH
-$currentPath = [Environment]::GetEnvironmentVariable("Path", "Machine")
-if (-not ($currentPath -like "*$winrarPath*")) {
-    [Environment]::SetEnvironmentVariable("Path", "$winrarPath;$currentPath", "Machine")
-    Write-Output "WinRAR path added to PATH."
-} else {
-    Write-Output "WinRAR is already in PATH."
-}
-
-Write-Output "WinRAR installation and PATH configuration completed."
+# Install WinRAR
+Install-WinRAR -url $url -outputPath $outputPath
