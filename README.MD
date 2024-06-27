@@ -30,7 +30,7 @@ This PowerShell script automates the process of downloading, installing, and add
 ## Usage
 
 1. Open PowerShell 
-2. Navigate to the directory containing the script.
+2. Navigate to the directory containing the script. `cd` the location of the script then click enter.
 3. Run the script:
    ```powershell
    .\WinRAR-7.01-auto-installer.ps1
