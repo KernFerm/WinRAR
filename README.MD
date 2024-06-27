@@ -37,11 +37,11 @@ This PowerShell script automates the process of downloading, installing, and add
    ```
 4. The script will handle the rest, providing output messages to indicate progress and completion status.
 
-### if usage doesnt work use this first 
+### if usage doesnt work use this first run it then select `Y` thats it click enter then run the script again 
 ```
 Set-ExecutionPolicy Bypass -Scope Process
 ```
-then repeat the process you can leave powershell open in admin mode to do this you dont have to close it 
+then repeat the process you can leave powershell open in admin mode to do this you dont have to close it
 
 ## How It Works
 
