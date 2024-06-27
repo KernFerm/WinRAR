@@ -1,51 +1,32 @@
-# Check if script is running as administrator
-if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Error "This script must be run as an administrator. Right-click the PowerShell icon and select 'Run as administrator'."
+# Define the URL to download WinRAR
+$url = "https://www.win-rar.com/fileadmin/winrar-versions/winrar-x64-701.exe"
+
+# Define the output path
+$outputPath = "$env:TEMP\winrar-installer.exe"
+
+# Download the WinRAR installer
+try {
+    Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
+    Write-Host "Download complete."
+} catch {
+    Write-Error "Failed to download WinRAR installer."
     exit 1
 }
 
-# Function to download and install WinRAR
-function Install-WinRAR {
-    param (
-        [string]$url,
-        [string]$outputPath
-    )
-
-    try {
-        Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
-        Write-Host "Download complete."
-    } catch {
-        Write-Error "Failed to download WinRAR installer."
-        exit 1
-    }
-
-    try {
-        Start-Process -FilePath $outputPath -ArgumentList "/S" -Wait
-        Write-Host "WinRAR installation complete."
-    } catch {
-        Write-Error "Failed to install WinRAR."
-        exit 1
-    }
-}
-
-# URLs for WinRAR versions
-$winrar32Url = "https://www.win-rar.com/postdownload.html?&L=0&Version=32bit"
-$winrar64Url = "https://www.win-rar.com/postdownload.html?&L=0&Version=64bit"
-
-# Prompt user for version choice
-$versionChoice = Read-Host "Enter the version of WinRAR you want to install (32bit or 64bit)"
-
-# Determine URL based on user input
-if ($versionChoice -eq "32bit") {
-    $url = $winrar32Url
-    $outputPath = "$env:TEMP\winrar-32bit-installer.exe"
-} elseif ($versionChoice -eq "64bit") {
-    $url = $winrar64Url
-    $outputPath = "$env:TEMP\winrar-64bit-installer.exe"
-} else {
-    Write-Error "Invalid choice. Please enter '32bit' or '64bit'."
+# Run the WinRAR installer silently
+try {
+    Start-Process -FilePath $outputPath -ArgumentList "/S" -Wait
+    Write-Host "WinRAR installation complete."
+} catch {
+    Write-Error "Failed to install WinRAR."
     exit 1
 }
 
-# Install WinRAR
-Install-WinRAR -url $url -outputPath $outputPath
+# Clean up the installer file
+try {
+    Remove-Item -Path $outputPath -Force
+    Write-Host "Clean up complete. Installer file removed."
+} catch {
+    Write-Error "Failed to remove the installer file."
+}
+
