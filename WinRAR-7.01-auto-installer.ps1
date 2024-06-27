@@ -22,11 +22,7 @@ try {
     exit 1
 }
 
-# Clean up the installer file
-try {
-    Remove-Item -Path $outputPath -Force
-    Write-Host "Clean up complete. Installer file removed."
-} catch {
-    Write-Error "Failed to remove the installer file."
-}
+# Wait for user input to close the window
+Read-Host -Prompt "Press Enter to close"
+
 
