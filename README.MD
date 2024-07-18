@@ -12,6 +12,110 @@ This PowerShell script automates the process of downloading, installing, and add
 - **Silent Installation**: Installs WinRAR silently without requiring user interaction.
 - **PATH Update**: Adds the WinRAR installation directory to the system PATH if it's not already present, allowing WinRAR commands to be run from anywhere in the command line.
 
+
+# WinRAR Silent Installer Script - Logging Information
+
+This PowerShell script automates the process of downloading and installing WinRAR silently on a Windows system. It includes robust logging mechanisms to ensure detailed tracking of the script's operations and troubleshooting.
+
+## Logging
+
+The script logs all actions and errors to a log file located in the temporary directory. The log file is named `winrar-install.log`.
+
+### Log File Location
+
+The log file is saved in the user's temporary directory. The typical path is:
+
+```
+C:\Users<YourUsername>\AppData\Local\Temp\winrar-install.log
+```
+
+### Logging Function
+
+The script includes a custom function `Log-Message` to handle logging. This function logs messages with a timestamp and a message type (INFO, ERROR, or WARNING).
+
+#### Log-Message Function Definition
+
+```powershell
+function Log-Message {
+    param (
+        [string]$message,
+        [string]$type = "INFO"
+    )
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logEntry = "$timestamp [$type] $message"
+    Write-Host $logEntry
+    Add-Content -Path $logFile -Value $logEntry
+}
+```
+
+Parameters
+- `message:` The message to log.
+- `type:` The type of message (INFO, ERROR, WARNING). The default is "INFO".
+
+## Example Log Entries
+- Info Message
+```
+2024-07-18 14:32:01 [INFO] Starting download of WinRAR from https://www.win-rar.com/fileadmin/winrar-versions/winrar-x64-701.exe
+```
+
+- Error Message
+```
+2024-07-18 14:32:45 [ERROR] Failed to download WinRAR installer: Exception calling "Invoke-WebRequest" with "2" argument(s): "The remote server returned an error: (404) Not Found."
+```
+
+- Warning Message
+```
+2024-07-18 14:33:10 [WARNING] Failed to remove the downloaded installer: Exception calling "Remove-Item" with "1" argument(s): "Cannot find path 'C:\Users\User\AppData\Local\Temp\winrar-installer.exe' because it does not exist."
+```
+
+## Logging Steps in the Script
+
+1. **Starting Download:** Logs the beginning of the download process.
+```
+Log-Message "Starting download of WinRAR from $url"
+```
+
+2. **Download Complete:** Logs the completion of the download.
+```
+Log-Message "Download complete."
+```
+
+3. **Download Failure:** Logs any errors during the download process.
+```
+Log-Message "Failed to download WinRAR installer: $_" "ERROR"
+```
+
+4. **File Verification:** Logs if the downloaded file is missing or empty.
+```
+Log-Message "Downloaded WinRAR installer is missing or empty." "ERROR"
+```
+
+5. **Starting Installation:** Logs the beginning of the installation process.
+```
+Log-Message "Starting silent installation of WinRAR."
+```
+
+6. **Installation Complete:** Logs the completion of the installation.
+```
+Log-Message "WinRAR installation complete."
+```
+
+7. **Installation Failure:** Logs any errors during the installation process.
+```
+Log-Message "Failed to install WinRAR: $_" "ERROR"
+```
+
+8. **Clean Up:** Logs the removal of the downloaded installer.
+```
+Log-Message "Cleaned up the downloaded installer."
+```
+
+9. **Clean Up Failure:** Logs any errors during the cleanup process.
+```
+Log-Message "Failed to remove the downloaded installer: $_" "WARNING"
+```
+
+
 ## Prerequisites
 
 - PowerShell 5.0 or higher
