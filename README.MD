@@ -4,7 +4,7 @@ This PowerShell script automates the process of downloading, installing, and add
 
 ## how to download the repo first time users
 
-  - click link to read [**Instructions**](https://www.fnbubbles420.org/Instructions-On-How-To-Download-Repo)
+  - click link to read [**Instructions**](https://www.gitprojects.fnbubbles420.org/how-to-download-repos)
 
 ## Features
 
