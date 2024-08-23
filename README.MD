@@ -125,11 +125,11 @@ Log-Message "Failed to remove the downloaded installer: $_" "WARNING"
 - You need to have PowerShell installed on your system. This is used to run the script.
 - `Both` MSI are from the official github page of [Official-PowerShell-Github](https://github.com/PowerShell)
 
-# v7.4.4 Release of PowerShell - Latest (recommended)
+# v7.4.5 Release of PowerShell - Latest (recommended)
       choose your recommended pc specs either 32bit or 64bit 
 
-- For Windows `64-bit systems`, [Download 64-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.4/PowerShell-7.4.4-win-x64.msi)
-- For Windows `32-bit systems`, [Download 32-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.4/PowerShell-7.4.4-win-x86.msi)
+- For Windows `64-bit systems`, [Download 64-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/PowerShell-7.4.5-win-x64.msi)
+- For Windows `32-bit systems`, [Download 32-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/PowerShell-7.4.5-win-x86.msi)
 
 ## Usage
 
