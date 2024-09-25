@@ -1,3 +1,8 @@
+## Support the Project ⭐
+
+If you find this project useful, please give it a star! Your support is appreciated and helps keep the project growing. 🌟
+
+
 # 📦 WinRAR Auto-Installer Script
 
 This **PowerShell script** automates the process of **downloading**, **installing**, and adding **WinRAR** to the system PATH on Windows machines 🪟.
