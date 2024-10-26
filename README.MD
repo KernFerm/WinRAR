@@ -115,12 +115,12 @@ Log-Message "Cleaned up the downloaded installer."
 
 ---
 
-### 🛠️ PowerShell Installation (Optional)
+### 🔧 v7.4.6 Release of PowerShell - Latest (recommended)
 
-If you need PowerShell, download it from the official GitHub page:
+Select the version that matches your system specs:
 
-- For **Windows 64-bit systems**: [Download 64-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/PowerShell-7.4.5-win-x64.msi)
-- For **Windows 32-bit systems**: [Download 32-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/PowerShell-7.4.5-win-x86.msi)
+- For **Windows 64-bit systems**: [Download 64-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/PowerShell-7.4.6-win-x64.msi)
+- For **Windows 32-bit systems**: [Download 32-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/PowerShell-7.4.6-win-x86.msi)
 
 ### 🚀 Usage
 
