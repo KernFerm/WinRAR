@@ -1,5 +1,5 @@
 # Define the URL to download WinRAR
-$url = "https://www.win-rar.com/fileadmin/winrar-versions/winrar-x64-701.exe"
+$url = "https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-713.exe"
 
 # Define the output path
 $outputPath = "$env:TEMP\winrar-installer.exe"
@@ -53,3 +53,4 @@ try {
 
 # Wait for user input to close the window
 Read-Host -Prompt "Press Enter to close"
+
