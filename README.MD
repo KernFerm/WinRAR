@@ -62,7 +62,7 @@ function Log-Message {
 
 - **Info Message:**
 ```
-2024-07-18 14:32:01 [INFO] Starting download of WinRAR from https://www.win-rar.com/fileadmin/winrar-versions/winrar-x64-701.exe
+2024-07-18 14:32:01 [INFO] Starting download of WinRAR from https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-713.exe
 ```
 
 - **Error Message:
@@ -119,8 +119,8 @@ Log-Message "Cleaned up the downloaded installer."
 
 Select the version that matches your system specs:
 
-- For **Windows 64-bit systems**: [Download 64-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/PowerShell-7.4.6-win-x64.msi)
-- For **Windows 32-bit systems**: [Download 32-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/PowerShell-7.4.6-win-x86.msi)
+- For **Windows 64-bit systems**: [Download 64-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.5.3/PowerShell-7.5.3-win-x64.msi)
+- For **Windows 32-bit systems**: [Download 32-Bit Installer](https://github.com/PowerShell/PowerShell/releases/download/v7.5.3/PowerShell-7.5.3-win-x86.msi)
 
 ### 🚀 Usage
 
@@ -165,3 +165,4 @@ This script is for **educational purposes** and should be used responsibly. Ensu
 ### 📜 License
 
 This script is provided "as is", without warranty of any kind, express or implied. Use it at your own risk.
+
